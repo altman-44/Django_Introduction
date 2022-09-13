@@ -1,11 +1,12 @@
 {% extends "main/layout.html" %}
 
 {% block content %}
-<form action="/register" method="post">
+<form action="/register/" method="post">
     <!-- Cross Site Request Forgery Token -->
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Register</button>
 </form>
 
-<p>If you already have an account, <a href="">login instead</a></p>
+<p>If you already have an account, <a href="/login"><strong>login</strong></a></p>
 {% endblock %}

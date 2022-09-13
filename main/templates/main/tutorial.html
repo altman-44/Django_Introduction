@@ -1,0 +1,42 @@
+{% extends "main/layout.html" %}
+
+{% block styles %}
+<style>
+    .collapsible-body {
+        padding-top: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col s12 m8 l8">
+        <h3>{{ tutorial.title }}</h3>
+        <p style="font-size: 80%;">Published: {{ tutorial.published }}</p>
+        <p>{{ tutorial.content|safe }}</p>
+    </div>
+
+    <div class="col s12 m4 l4">
+        <ul class="collapsible popout">
+            {% for tutorial in sidebar %}
+            {% if forloop.counter0 == tutorialIdx %}
+            <li class="active">
+                <div class="collapsible-header" style="display: flex; flex-direction: column;">
+                    {{ tutorial.title }}
+                    <span style="font-style:italic;font-size: 95%;">(currently viewing)</span>
+                </div>
+            </li>
+            {% else %}
+            <li>
+                <div class="collapsible-header">{{ tutorial.title }}</div>
+                <div class="collapsible-body">
+                    <p>{{ tutorial.published }}</p>
+                    <p><a href="/{{tutorial.slug}}"><button class="btn waves-effect waves-light right-align">Go</button></a></p>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

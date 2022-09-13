@@ -1,0 +1,22 @@
+<!-- Toasts -->
+{% if messages %}
+<script>
+    const MESSAGES_TIMEOUT = 3000
+</script>
+{% for msg in messages %}
+
+{% if msg.tags == 'success' %}
+<script>M.toast({ html: '{{msg}}', classes: 'green rounded', displayLength: MESSAGES_TIMEOUT})</script>
+{% endif %}
+{% if msg.tags == 'error' %}
+<script>M.toast({ html: '{{msg}}', classes: 'red rounded', displayLength: MESSAGES_TIMEOUT})</script>
+{% endif %}
+{% if msg.tags == 'info' %}
+<script>M.toast({ html: '{{msg}}', classes: 'blue rounded', displayLength: MESSAGES_TIMEOUT})</script>
+{% endif %}
+{% if msg.tags == 'warning' %}
+<script>M.toast({ html: '{{msg}}', classes: 'orange rounded', displayLength: MESSAGES_TIMEOUT})</script>
+{% endif %}
+
+{% endfor %}
+{% endif %}
